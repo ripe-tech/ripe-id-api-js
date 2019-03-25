@@ -1,3 +1,5 @@
+import hello from "./render.js";
+
 const RIPEID_BASE_URL = "https://id.platforme.com/api/";
 const RIPEID_LOGIN_URL = "https://id.platforme.com/";
 const RIPEID_SCOPE = ["account.me", "account.acl"];
@@ -25,6 +27,8 @@ class API {
         this.sessionId = sessionId;
     }
 }
+
+hello();
 
 if (typeof module !== "undefined") {
     module.exports = {

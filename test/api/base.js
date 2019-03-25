@@ -1,5 +1,5 @@
 const assert = require("assert");
-const ripe = require("../../js");
+const ripe = require("../..");
 
 describe("Api", function() {
     describe("#constructor()", function() {
