@@ -23,7 +23,6 @@
         "url": "https://www.platforme.com"
     },
     "files": [
-        "gulpfile.js",
         "dist/**/*",
         "res/**/*",
         "js/**/*.js",
