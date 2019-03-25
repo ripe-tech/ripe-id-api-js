@@ -16,6 +16,11 @@ export class API extends Observable {
         const response = await fetch(url, {
             method: "GET"
         });
+        const result = await this.handleResponse(response);
+        return result;
+    }
+
+    async handleResponse(response) {
         let result = null;
         if (response.headers.get("content-type").toLowerCase() === "application/json") {
             result = await response.json();
