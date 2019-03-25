@@ -10,22 +10,38 @@ export default [
             name: "ripeId",
             file: pkg.browser,
             format: "umd",
-            exports: "named"
+            exports: "named",
+            sourcemap: true
         },
         plugins: [
-            resolve(),
+            resolve({
+                browser: true
+            }),
             commonjs(),
             babel({
-                exclude: "node_modules/**"
+                exclude: "node_modules/**",
+                runtimeHelpers: true
             })
-        ]
+        ],
+        moduleContext: {
+            [require.resolve("node-fetch")]: "window"
+        }
     },
     {
         input: "js/base.js",
-        external: ["ripe-id"],
+        external: ["fs", "zlib", "http", "https", "url", "stream"],
         output: [
-            { file: pkg.main, format: "cjs", exports: "named" },
-            { file: pkg.module, format: "es" }
+            {
+                file: pkg.main,
+                format: "cjs",
+                exports: "named",
+                sourcemap: true
+            },
+            {
+                file: pkg.module,
+                format: "es",
+                sourcemap: true
+            }
         ],
         plugins: [resolve()]
     }

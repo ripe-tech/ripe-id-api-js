@@ -1,5 +1,6 @@
 import { Observable } from "./observable";
 import fetch from "node-fetch";
+import "regenerator-runtime/runtime";
 
 export class API extends Observable {
     async get(
@@ -16,9 +17,11 @@ export class API extends Observable {
         const response = await fetch(url, {
             method: "GET"
         });
-        let result = await response.blob();
+        let result = null;
         if (response.headers.get("content-type").toLowerCase() === "application/json") {
-            result = JSON.parse(result);
+            result = await response.json();
+        } else {
+            result = await response.blob();
         }
         return result;
     }
