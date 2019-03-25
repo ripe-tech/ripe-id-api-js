@@ -4,7 +4,7 @@ const RIPEID_BASE_URL = "https://id.platforme.com/api/";
 const RIPEID_LOGIN_URL = "https://id.platforme.com/";
 const RIPEID_SCOPE = ["account.me", "account.acl"];
 
-class API {
+export class API {
     constructor(
         baseUrl = RIPEID_BASE_URL,
         loginUrl = RIPEID_LOGIN_URL,
@@ -30,8 +30,4 @@ class API {
 
 hello();
 
-if (typeof module !== "undefined") {
-    module.exports = {
-        API: API
-    };
-}
+export default API;

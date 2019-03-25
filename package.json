@@ -38,7 +38,8 @@
         "lint": "eslint \"./{js,test}/**/*.{js,json}\"",
         "prettier": "prettier \"./*.{js,json}\" \"./{js,test}/**/*.{js,json}\" --write",
         "test": "mocha --recursive",
-        "upgrade": "npx sort-package-json && ncu -u"
+        "upgrade": "npx sort-package-json && ncu -u",
+        "watch": "rollup -c -w"
     },
     "dependencies": {},
     "devDependencies": {

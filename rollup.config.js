@@ -8,13 +8,17 @@ export default [
         output: {
             name: "ripeId",
             file: pkg.browser,
-            format: "umd"
+            format: "umd",
+            exports: "named"
         },
         plugins: [resolve(), commonjs()]
     },
     {
         input: "js/base.js",
         external: ["ripe-id"],
-        output: [{ file: pkg.main, format: "cjs" }, { file: pkg.module, format: "es" }]
+        output: [
+            { file: pkg.main, format: "cjs", exports: "named" },
+            { file: pkg.module, format: "es" }
+        ]
     }
 ];
