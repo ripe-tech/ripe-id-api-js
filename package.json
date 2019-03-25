@@ -35,13 +35,16 @@
     "browser": "dist/ripe-id.umd.js",
     "scripts": {
         "build": "rollup -c",
+        "example": "node examples/simple.js",
         "lint": "eslint \"./{js,test}/**/*.{js,json}\"",
         "prettier": "prettier \"./*.{js,json}\" \"./{js,test}/**/*.{js,json}\" --write",
         "test": "mocha --recursive",
         "upgrade": "npx sort-package-json && ncu -u",
         "watch": "rollup -c -w"
     },
-    "dependencies": {},
+    "dependencies": {
+        "node-fetch": "^2.3.0"
+    },
     "devDependencies": {
         "@babel/core": "^7.4.0",
         "@babel/polyfill": "^7.4.0",
@@ -57,6 +60,6 @@
         "rollup-plugin-babel": "^4.3.2",
         "rollup-plugin-commonjs": "^9.2.2",
         "rollup-plugin-node-resolve": "^4.0.1",
-        "sort-package-json": "^1.21.0"
+        "sort-package-json": "^1.22.0"
     }
 }

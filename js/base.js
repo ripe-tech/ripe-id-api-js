@@ -27,6 +27,10 @@ export class API extends OAuth2API {
         this.refreshToken = refreshToken;
         this.sessionId = sessionId;
     }
+
+    async ping() {
+        return "pong";
+    }
 }
 
 export default API;
