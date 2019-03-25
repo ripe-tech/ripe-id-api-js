@@ -1,10 +1,10 @@
-import { OAuth2 } from "./root";
+import { OAuth2API } from "./root";
 
 const RIPEID_BASE_URL = "https://id.platforme.com/api/";
 const RIPEID_LOGIN_URL = "https://id.platforme.com/";
 const RIPEID_SCOPE = ["account.me", "account.acl"];
 
-export class API extends OAuth2 {
+export class API extends OAuth2API {
     constructor(
         baseUrl = RIPEID_BASE_URL,
         loginUrl = RIPEID_LOGIN_URL,

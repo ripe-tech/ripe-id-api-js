@@ -1,5 +1,5 @@
-import API from "./api";
+import { API } from "./api";
 
-export class OAuth extends API {}
+export class OAuthAPI extends API {}
 
-export default OAuth;
+export default OAuthAPI;

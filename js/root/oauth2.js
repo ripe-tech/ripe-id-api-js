@@ -1,5 +1,5 @@
-import OAuth from "./oauth";
+import { OAuthAPI } from "./oauth";
 
-export class OAuth2 extends OAuth {}
+export class OAuth2API extends OAuthAPI {}
 
-export default OAuth2;
+export default OAuth2API;
