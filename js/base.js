@@ -4,4 +4,8 @@ class API {
     }
 }
 
-export default API;
+if (typeof module !== "undefined") {
+    module.exports = {
+        API: API
+    };
+}
