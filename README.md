@@ -1,2 +1,3 @@
-# ripe-id-api-js
-The Javascript version of the RIPE ID API client
+# RIPE ID API Javascript
+
+The Javascript version of the RIPE ID API client.
