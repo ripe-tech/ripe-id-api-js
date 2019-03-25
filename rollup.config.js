@@ -3,12 +3,20 @@ import resolve from "rollup-plugin-node-resolve";
 import commonjs from "rollup-plugin-commonjs";
 import pkg from "./package.json";
 
+const banner =
+    "/*!\n" +
+    ` * ripe-id-api.js v${pkg.version}\n` +
+    ` * (c) 2014-${new Date().getFullYear()} Platforme International\n` +
+    " * Released under the MIT License.\n" +
+    " */";
+
 export default [
     {
         input: "js/base.js",
         output: {
             name: "ripeId",
             file: pkg.browser,
+            banner: banner,
             format: "umd",
             exports: "named",
             sourcemap: true
@@ -33,12 +41,14 @@ export default [
         output: [
             {
                 file: pkg.main,
+                banner: banner,
                 format: "cjs",
                 exports: "named",
                 sourcemap: true
             },
             {
                 file: pkg.module,
+                banner: banner,
                 format: "es",
                 sourcemap: true
             }
