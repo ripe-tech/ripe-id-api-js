@@ -3,3 +3,5 @@ class API {
         this.baseUrl = baseUrl || "http://www.sapo.pt";
     }
 }
+
+export default API;
