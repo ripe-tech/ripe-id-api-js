@@ -1,6 +1,5 @@
 import { Observable } from "./observable";
 import fetch from "node-fetch";
-import "regenerator-runtime/runtime";
 
 export class API extends Observable {
     async get(

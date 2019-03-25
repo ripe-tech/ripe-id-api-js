@@ -1,3 +1,4 @@
+export * from "./legacy";
 export { API } from "./api";
 export { OAuthAPI } from "./oauth";
 export { OAuth1API } from "./oauth1";
