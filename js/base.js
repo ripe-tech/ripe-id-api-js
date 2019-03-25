@@ -1,5 +1,4 @@
-import hello from "./render.js";
-import OAuth2 from "./oauth2.js";
+import OAuth2 from "./oauth2";
 
 const RIPEID_BASE_URL = "https://id.platforme.com/api/";
 const RIPEID_LOGIN_URL = "https://id.platforme.com/";
@@ -29,7 +28,5 @@ export class API extends OAuth2 {
         this.sessionId = sessionId;
     }
 }
-
-hello();
 
 export default API;

@@ -1,5 +1,5 @@
 
-import OAuth from "./oauth.js";
+import OAuth from "./oauth";
 
 export class OAuth2 extends OAuth {
 }
