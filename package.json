@@ -32,6 +32,7 @@
     "main": "js/index.js",
     "unpkg": "dist/ripe-id.js",
     "scripts": {
+        "build": "rollup -c",
         "lint": "eslint \"./{js,test}/**/*.{js,json}\"",
         "test": "mocha --recursive",
         "prettier": "prettier \"./*.{js,json}\" \"./{js,test}/**/*.{js,json}\" --write",
@@ -48,6 +49,7 @@
         "mocha-cli": "^1.0.1",
         "prettier": "^1.16.4",
         "prettier-config-hive": "^0.1.1",
-        "sort-package-json": "^1.21.0"
+        "sort-package-json": "^1.21.0",
+        "rollup": "^1.7.3"
     }
 }
