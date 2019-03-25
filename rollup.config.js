@@ -26,6 +26,9 @@ export default [
         output: [
             { file: pkg.main, format: "cjs", exports: "named" },
             { file: pkg.module, format: "es" }
+        ],
+        plugins: [
+            resolve()
         ]
     }
 ];
