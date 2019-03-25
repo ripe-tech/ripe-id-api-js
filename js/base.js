@@ -1,10 +1,11 @@
 import hello from "./render.js";
+import OAuth2 from "./oauth2.js";
 
 const RIPEID_BASE_URL = "https://id.platforme.com/api/";
 const RIPEID_LOGIN_URL = "https://id.platforme.com/";
 const RIPEID_SCOPE = ["account.me", "account.acl"];
 
-export class API {
+export class API extends OAuth2 {
     constructor(
         baseUrl = RIPEID_BASE_URL,
         loginUrl = RIPEID_LOGIN_URL,
@@ -16,6 +17,7 @@ export class API {
         refreshToken = null,
         sessionId = null
     ) {
+        super();
         this.baseUrl = baseUrl;
         this.loginUrl = loginUrl;
         this.clientId = clientId;
