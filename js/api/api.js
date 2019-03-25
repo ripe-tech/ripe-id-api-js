@@ -14,13 +14,14 @@ export class API extends Observable {
         extra = null
     ) {
         const response = await fetch(url, {
-            method: "GET"
+            method: "GET",
+            headers: headers || {}
         });
-        const result = await this.handleResponse(response);
+        const result = await this._handleResponse(response);
         return result;
     }
 
-    async handleResponse(response) {
+    async _handleResponse(response) {
         let result = null;
         if (response.headers.get("content-type").toLowerCase() === "application/json") {
             result = await response.json();
