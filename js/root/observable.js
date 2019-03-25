@@ -1,4 +1,3 @@
-export class Observable {
-}
+export class Observable {}
 
 export default Observable;
