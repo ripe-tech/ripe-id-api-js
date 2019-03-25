@@ -1,4 +1,4 @@
-import { OAuth2API } from "./root";
+import { OAuth2API } from "./api";
 
 const RIPEID_BASE_URL = "https://id.platforme.com/api/";
 const RIPEID_LOGIN_URL = "https://id.platforme.com/";
