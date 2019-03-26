@@ -16,6 +16,7 @@ const banner =
 export default [
     {
         input: "js/base.js",
+        external: ["node-fetch"],
         output: {
             name: "ripeId",
             file: pkg.browser,
@@ -23,24 +24,23 @@ export default [
             format: "umd",
             exports: "named",
             compact: true,
-            sourcemap: true
+            sourcemap: true,
+            globals: {
+                "node-fetch": "window"
+            }
         },
         plugins: [
-            resolve({
-                browser: true
-            }),
+            resolve(),
             commonjs(),
             babel({
                 exclude: "node_modules/**",
                 runtimeHelpers: true
             })
-        ],
-        namedExports: {
-            [require.resolve("yonius")]: "OAuth2API"
-        }
+        ]
     },
     {
         input: "js/base.js",
+        external: ["node-fetch"],
         output: [
             {
                 file: pkg.main,
