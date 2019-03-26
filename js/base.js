@@ -6,7 +6,7 @@ const RIPEID_BASE_URL = "https://id.platforme.com/api/";
 const RIPEID_LOGIN_URL = "https://id.platforme.com/";
 const RIPEID_SCOPE = ["account.me", "account.acl"];
 
-export class API extends OAuth2API {
+export class API extends HTTPBinAPI(AccountAPI(OAuth2API)) {
     constructor(
         baseUrl = RIPEID_BASE_URL,
         loginUrl = RIPEID_LOGIN_URL,
@@ -39,8 +39,5 @@ export class API extends OAuth2API {
         return result;
     }
 }
-
-Object.assign(API.prototype, AccountAPI);
-Object.assign(API.prototype, HTTPBinAPI);
 
 export default API;
