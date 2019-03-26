@@ -29,15 +29,6 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
         this.refreshToken = refreshToken;
         this.sessionId = sessionId;
     }
-
-    async ping() {
-        return "pong";
-    }
-
-    async hello() {
-        const result = await this.get("https://www.hive.pt/");
-        return result;
-    }
 }
 
 export default API;
