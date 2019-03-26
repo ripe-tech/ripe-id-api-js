@@ -13,7 +13,9 @@ export const HTTPBinAPI = superclass =>
 
         async headers(headers = null) {
             const url = this.httpbinUrl + "headers";
-            const result = await this.get(url, undefined, headers || { hello: "world" });
+            const result = await this.get(url, {
+                headers: headers || { hello: "world" }
+            });
             return result;
         }
     };

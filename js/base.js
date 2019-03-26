@@ -53,7 +53,7 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
             kwargs
         );
         const auth = kwargs.auth === undefined ? true : kwargs.auth;
-        if (auth) params.sid = await self.getSessionId();
+        if (auth) params.sid = await this.getSessionId();
     }
 
     async getSessionId() {
@@ -69,7 +69,7 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
 
         if (this.sessionId) {
             this.sessionId = null;
-            const sessionId = self.getSessionId();
+            const sessionId = this.getSessionId();
             params.sid = sessionId;
         }
     }
@@ -98,13 +98,17 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
         const contents = await this.post(
             url,
             {
-                token: false,
-                auth: false,
-                client_id: this.clientId,
-                client_secret: this.clientSecret,
-                grant_type: "authorization_code",
-                redirect_uri: this.redirect_url,
-                code: code
+                params: {
+                    client_id: this.clientId,
+                    client_secret: this.clientSecret,
+                    grant_type: "authorization_code",
+                    redirect_uri: this.redirect_url,
+                    code: code
+                },
+                kwargs: {
+                    token: false,
+                    auth: false
+                }
             }
         );
         this.accessToken = contents.access_token;
@@ -112,6 +116,42 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
         this.trigger("access_token", this.accessToken);
         this.trigger("refresh_token", this.refreshToken);
         return this.accessToken;
+    }
+
+    async oauthRefresh() {
+        const url = this.loginUrl + "oauth2/token";
+        const contents = await this.post(
+            url,
+            {
+                callback: false,
+                params: {
+                    client_id: this.clientId,
+                    client_secret: this.clientSecret,
+                    grant_type: "refresh_token",
+                    redirect_uri: this.redirectUrl,
+                    refresh_token: this.refreshToken
+                },
+                kwargs: {
+                    token: false,
+                    auth: false
+                }
+            }
+        );
+        this.accessToken = contents.access_token;
+        this.trigger("access_token", this.accessToken);
+        return this.accessToken;
+    }
+
+    async oauthLogin() {
+        const url = this.loginUrl + "oauth2/login";
+        const contents = await this.post(url, {
+            callback: false,
+            kwargs: { token: true, auth: false }
+        });
+        this.sessionId = contents.session_id || null;
+        this.tokens = contents.tokens || null;
+        this.trigger("auth", contents);
+        return this.sessionId;
     }
 }
 
