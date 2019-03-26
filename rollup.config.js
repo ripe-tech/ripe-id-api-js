@@ -29,10 +29,13 @@ export default [
             }
         },
         plugins: [
-            resolve(),
+            resolve({
+                module: true
+            }),
             commonjs(),
             babel({
-                exclude: "node_modules/**"
+                babelrc: false,
+                presets: ["@babel/preset-env"]
             })
         ]
     },
