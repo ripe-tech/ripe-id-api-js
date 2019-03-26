@@ -35,13 +35,12 @@ export default [
                 runtimeHelpers: true
             })
         ],
-        moduleContext: {
-            [require.resolve("node-fetch")]: "window"
+        namedExports: {
+            [require.resolve("yonius")]: "OAuth2API"
         }
     },
     {
         input: "js/base.js",
-        external: ["fs", "zlib", "http", "https", "url", "stream"],
         output: [
             {
                 file: pkg.main,

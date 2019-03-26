@@ -11,10 +11,6 @@ export const AccountAPI = superclass =>
             const contents = await this.get(url);
             return contents;
         }
-
-        helloAccount() {
-            return "hello account";
-        }
     };
 
 export default AccountAPI;

@@ -1,4 +1,4 @@
-import { OAuth2API } from "./api";
+import { OAuth2API } from "yonius";
 import { AccountAPI } from "./account";
 
 const RIPEID_BASE_URL = "https://id.platforme.com/api/";
