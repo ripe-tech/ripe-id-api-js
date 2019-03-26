@@ -9,4 +9,13 @@ describe("AccountAPI", function() {
             assert.notStrictEqual(api.selfAccount, undefined);
         });
     });
+
+    describe("#oauthAuthorize()", function() {
+        it("should be able to generate a simple authorize URL", async () => {
+            let result;
+            const api = new ripe.API();
+            result = await api.oauthAuthorize("data");
+            assert.strictEqual(result, "https://id.platforme.com/oauth2/auth?response_type=code&scope=account.me%20account.acl&state=data");
+        });
+    });
 });
