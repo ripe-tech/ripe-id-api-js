@@ -43,13 +43,10 @@
         "watch": "rollup -c -w"
     },
     "dependencies": {
-        "node-fetch": "^2.3.0",
-        "whatwg-fetch": "^2.0.4",
-        "promise-polyfill": "^8.1.0"
+        "node-fetch": "^2.3.0"
     },
     "devDependencies": {
         "@babel/core": "^7.4.0",
-        "@babel/polyfill": "^7.4.0",
         "@babel/preset-env": "^7.4.2",
         "eslint": "^5.15.3",
         "eslint-config-hive": "^0.1.8",
