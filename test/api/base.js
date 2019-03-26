@@ -6,6 +6,7 @@ describe("AccountAPI", function() {
         it("should be able to contruct a new Acocunt API instance", () => {
             const api = new ripe.API();
             assert.notStrictEqual(api.selfAccount, null);
+            assert.notStrictEqual(api.selfAccount, undefined);
         });
     });
 });

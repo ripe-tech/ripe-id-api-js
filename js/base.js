@@ -1,11 +1,12 @@
 import { OAuth2API } from "yonius";
 import { AccountAPI } from "./account";
+import { HTTPBinAPI } from "./httpbin";
 
 const RIPEID_BASE_URL = "https://id.platforme.com/api/";
 const RIPEID_LOGIN_URL = "https://id.platforme.com/";
 const RIPEID_SCOPE = ["account.me", "account.acl"];
 
-export class API extends AccountAPI(OAuth2API) {
+export class API extends OAuth2API {
     constructor(
         baseUrl = RIPEID_BASE_URL,
         loginUrl = RIPEID_LOGIN_URL,
@@ -37,19 +38,9 @@ export class API extends AccountAPI(OAuth2API) {
         const result = await this.get("https://www.hive.pt/");
         return result;
     }
-
-    async ip() {
-        const result = await this.get("https://httpbin.stage.hive.pt/ip");
-        return result;
-    }
-
-    async headers(headers = null) {
-        const result = await this.get(
-            "https://httpbin.stage.hive.pt/headers",
-            headers || { hello: "world" }
-        );
-        return result;
-    }
 }
+
+Object.assign(API.prototype, AccountAPI);
+Object.assign(API.prototype, HTTPBinAPI);
 
 export default API;
