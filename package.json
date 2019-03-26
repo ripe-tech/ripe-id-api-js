@@ -43,7 +43,9 @@
         "watch": "rollup -c -w"
     },
     "dependencies": {
-        "node-fetch": "^2.3.0"
+        "node-fetch": "^2.3.0",
+        "whatwg-fetch": "^2.0.4",
+        "promise-polyfill": "^8.1.0"
     },
     "devDependencies": {
         "@babel/core": "^7.4.0",

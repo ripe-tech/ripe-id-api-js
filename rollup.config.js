@@ -36,7 +36,8 @@ export default [
             })
         ],
         moduleContext: {
-            [require.resolve("node-fetch")]: "window"
+            [require.resolve("node-fetch")]: "window",
+            [require.resolve("whatwg-fetch")]: "window"
         }
     },
     {
@@ -57,6 +58,9 @@ export default [
                 sourcemap: true
             }
         ],
-        plugins: [resolve()]
+        plugins: [resolve()],
+        moduleContext: {
+            [require.resolve("whatwg-fetch")]: "global"
+        }
     }
 ];
