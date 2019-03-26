@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Title of the document</title>
+    <script src="../../dist/ripe-id.umd.js"></script>
+</head>
+<body>
+    <script>
+        async function hello() {
+            const api = new ripeId.API();
+            const result = await api.ip();
+            alert(result.origin);
+            return result;
+        };
+        hello();
+    </script>
+</body>
+</html>
