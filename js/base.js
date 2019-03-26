@@ -1,10 +1,11 @@
 import { OAuth2API } from "./api";
+import { AccountAPI } from "./account";
 
 const RIPEID_BASE_URL = "https://id.platforme.com/api/";
 const RIPEID_LOGIN_URL = "https://id.platforme.com/";
 const RIPEID_SCOPE = ["account.me", "account.acl"];
 
-export class API extends OAuth2API {
+export class API extends AccountAPI(OAuth2API) {
     constructor(
         baseUrl = RIPEID_BASE_URL,
         loginUrl = RIPEID_LOGIN_URL,
@@ -50,5 +51,14 @@ export class API extends OAuth2API {
         return result;
     }
 }
+
+Object.size = function(obj) {
+    var size = 0;
+    var key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
 
 export default API;
