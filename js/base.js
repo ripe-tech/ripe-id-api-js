@@ -92,6 +92,27 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
         url = url + "?" + data;
         return url;
     }
+
+    async oauthAccess(code) {
+        const url = this.loginUrl + "oauth2/token";
+        const contents = await this.post(
+            url,
+            {
+                token: false,
+                auth: false,
+                client_id: this.clientId,
+                client_secret: this.clientSecret,
+                grant_type: "authorization_code",
+                redirect_uri: this.redirect_url,
+                code: code
+            }
+        );
+        this.accessToken = contents.access_token;
+        this.refreshToken = contents.refresh_token || null;
+        this.trigger("access_token", this.accessToken);
+        this.trigger("refresh_token", this.refreshToken);
+        return this.accessToken;
+    }
 }
 
 export default API;
