@@ -76,11 +76,11 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
 
     async oauthAuthorize(state = null) {
         let url = this.loginUrl + "oauth2/auth";
-        verifyMany((
+        verifyMany([
             this.clientId,
             this.redirectUrl,
             this.scope
-        ));
+        ]);
         const values = {
             client_id: this.clientId,
             redirect_uri: this.redirectUrl,
