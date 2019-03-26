@@ -45,7 +45,7 @@ export class API extends OAuth2API {
     async headers(headers = null) {
         const result = await this.get(
             "https://httpbin.stage.hive.pt/headers",
-            headers || { "hello": "world" }
+            headers || { hello: "world" }
         );
         return result;
     }

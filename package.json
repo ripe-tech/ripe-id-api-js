@@ -23,6 +23,7 @@
         "url": "https://www.platforme.com"
     },
     "files": [
+        "LICENSE",
         "dist/**/*",
         "res/**/*",
         "js/**/*.js",
@@ -42,7 +43,8 @@
         "watch": "rollup -c -w"
     },
     "dependencies": {
-        "node-fetch": "^2.3.0"
+        "node-fetch": "^2.3.0",
+        "pluginus": "^0.1.10"
     },
     "devDependencies": {
         "@babel/core": "^7.4.0",
