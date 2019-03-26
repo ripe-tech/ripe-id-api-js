@@ -1,4 +1,4 @@
-import { OAuth2API } from "yonius";
+import { OAuth2API, mix } from "yonius";
 import { AccountAPI } from "./account";
 import { HTTPBinAPI } from "./httpbin";
 
@@ -6,7 +6,7 @@ const RIPEID_BASE_URL = "https://id.platforme.com/api/";
 const RIPEID_LOGIN_URL = "https://id.platforme.com/";
 const RIPEID_SCOPE = ["account.me", "account.acl"];
 
-export class API extends HTTPBinAPI(AccountAPI(OAuth2API)) {
+export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
     constructor(
         baseUrl = RIPEID_BASE_URL,
         loginUrl = RIPEID_LOGIN_URL,
