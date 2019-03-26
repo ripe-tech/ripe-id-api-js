@@ -1,4 +1,4 @@
-import { OAuth2API, mix } from "yonius";
+import { OAuth2API, mix, urlEncode, verifyMany } from "yonius";
 import { AccountAPI } from "./account";
 import { HTTPBinAPI } from "./httpbin";
 
@@ -76,11 +76,11 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
 
     async oauthAuthorize(state = null) {
         let url = this.loginUrl + "oauth2/auth";
-        //appier.verifyMany((
-        //    self.client_id,
-        //   self.redirect_url,
-        //     self.scope
-        //)) // @todo implement this on the yonius
+        verifyMany((
+            this.clientId,
+            this.redirectUrl,
+            this.scope
+        ));
         const values = {
             client_id: this.clientId,
             redirect_uri: this.redirectUrl,
@@ -88,43 +88,9 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
             scope: this.scope.join(" ")
         };
         if (state) values.state = state;
-        const data = this._urlEncode(values); //@todo use yonius
+        const data = urlEncode(values);
         url = url + "?" + data;
         return url;
-    }
-
-    _urlEncode(values) {
-        // constructs the parts array that is going to
-        // store the multiple and values
-        const parts = [];
-
-        // in case the provided value is not an array
-        // then assumes it's an object and retrieve entries
-        if (!Array.isArray(values)) {
-            values = Object.entries(values);
-        }
-
-        // iterates over the complete set of pairs available
-        // from the key value pairs to be able to encode them
-        // properly, notice that the values themselves can be
-        // sequences allowing multiple repetition of key
-        values.forEach(([key, value]) => {
-            if (!Array.isArray(value)) {
-                value = [value];
-            }
-            const keyEncoded = encodeURIComponent(key);
-            value.forEach(_value => {
-                if (_value === undefined || _value === null) {
-                    return;
-                }
-                const valueEncoded = encodeURIComponent(_value);
-                parts.push(`${keyEncoded}=${valueEncoded}`);
-            });
-        });
-
-        // joins the complete set of parts with the and
-        // separator and then returns the final string value
-        return parts.join("&");
     }
 }
 
