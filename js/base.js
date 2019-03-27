@@ -30,28 +30,10 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
         this.sessionId = sessionId;
     }
 
-    async build(
-        method,
-        url,
-        data = null,
-        dataJ = null,
-        dataM = null,
-        headers = null,
-        params = null,
-        mime = null,
-        kwargs = null
-    ) {
-        super.build(
-            method,
-            url,
-            data,
-            dataJ,
-            dataM,
-            headers,
-            params,
-            mime,
-            kwargs
-        );
+    async build(method, url, options = {}) {
+        await super.build(method, url, options);
+        let params = options.params !== undefined ? options.params : {};
+        let kwargs = options.kwargs !== undefined ? options.kwargs : {};
         const auth = kwargs.auth === undefined ? true : kwargs.auth;
         if (auth) params.sid = await this.getSessionId();
     }
