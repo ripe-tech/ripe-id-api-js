@@ -13,13 +13,11 @@ describe("AccountAPI", function() {
     describe("#oauthAuthorize()", function() {
         it("should be able to generate a simple authorize URL", async () => {
             let result;
-            const api = new ripe.API(
-                undefined,
-                undefined,
-                "dummy",
-                "dummy",
-                "http://dummy.com/redirect"
-            );
+            const api = new ripe.API({
+                clientId: "dummy",
+                clientKey: "dummy",
+                redirectUrl: "http://dummy.com/redirect"
+            });
             result = await api.oauthAuthorize("data");
             assert.strictEqual(
                 result,

@@ -17,7 +17,8 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
         this.baseUrl = kwargs.baseUrl === undefined ? this.baseUrl : kwargs.baseUrl;
         this.loginUrl = kwargs.loginUrl === undefined ? this.loginUrl : kwargs.loginUrl;
         this.clientId = kwargs.clientId === undefined ? this.clientId : kwargs.clientId;
-        this.clientSecret = kwargs.clientSecret === undefined ? this.clientSecret : kwargs.clientSecret;
+        this.clientSecret =
+            kwargs.clientSecret === undefined ? this.clientSecret : kwargs.clientSecret;
         this.redirectUrl = kwargs.redirectUrl === undefined ? this.redirectUrl : kwargs.redirectUrl;
         this.scope = kwargs.scope === undefined ? RIPEID_SCOPE : kwargs.scope;
         this.accessToken = kwargs.accessToken === undefined ? null : kwargs.accessToken;
