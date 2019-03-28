@@ -58,11 +58,7 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
 
     async oauthAuthorize(state = null) {
         let url = this.loginUrl + "oauth2/auth";
-        verifyMany([
-            this.clientId,
-            this.redirectUrl,
-            this.scope
-        ]);
+        verifyMany([this.clientId, this.redirectUrl, this.scope]);
         const values = {
             client_id: this.clientId,
             redirect_uri: this.redirectUrl,
@@ -77,22 +73,19 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
 
     async oauthAccess(code) {
         const url = this.loginUrl + "oauth2/token";
-        const contents = await this.post(
-            url,
-            {
-                params: {
-                    client_id: this.clientId,
-                    client_secret: this.clientSecret,
-                    grant_type: "authorization_code",
-                    redirect_uri: this.redirect_url,
-                    code: code
-                },
-                kwargs: {
-                    token: false,
-                    auth: false
-                }
+        const contents = await this.post(url, {
+            params: {
+                client_id: this.clientId,
+                client_secret: this.clientSecret,
+                grant_type: "authorization_code",
+                redirect_uri: this.redirect_url,
+                code: code
+            },
+            kwargs: {
+                token: false,
+                auth: false
             }
-        );
+        });
         this.accessToken = contents.access_token;
         this.refreshToken = contents.refresh_token || null;
         this.trigger("access_token", this.accessToken);
@@ -102,23 +95,20 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
 
     async oauthRefresh() {
         const url = this.loginUrl + "oauth2/token";
-        const contents = await this.post(
-            url,
-            {
-                callback: false,
-                params: {
-                    client_id: this.clientId,
-                    client_secret: this.clientSecret,
-                    grant_type: "refresh_token",
-                    redirect_uri: this.redirectUrl,
-                    refresh_token: this.refreshToken
-                },
-                kwargs: {
-                    token: false,
-                    auth: false
-                }
+        const contents = await this.post(url, {
+            callback: false,
+            params: {
+                client_id: this.clientId,
+                client_secret: this.clientSecret,
+                grant_type: "refresh_token",
+                redirect_uri: this.redirectUrl,
+                refresh_token: this.refreshToken
+            },
+            kwargs: {
+                token: false,
+                auth: false
             }
-        );
+        });
         this.accessToken = contents.access_token;
         this.trigger("access_token", this.accessToken);
         return this.accessToken;
