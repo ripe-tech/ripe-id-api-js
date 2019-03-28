@@ -1,4 +1,4 @@
-import { OAuth2API, mix, urlEncode, verifyMany } from "yonius";
+import { OAuth2API, mix, urlEncode, verifyMany, conf } from "yonius";
 import { AccountAPI } from "./account";
 import { HTTPBinAPI } from "./httpbin";
 
@@ -7,27 +7,22 @@ const RIPEID_LOGIN_URL = "https://id.platforme.com/";
 const RIPEID_SCOPE = ["account.me", "account.acl"];
 
 export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
-    constructor(
-        baseUrl = RIPEID_BASE_URL,
-        loginUrl = RIPEID_LOGIN_URL,
-        clientId = null,
-        clientSecret = null,
-        redirectUrl = null,
-        scope = RIPEID_SCOPE,
-        accessToken = null,
-        refreshToken = null,
-        sessionId = null
-    ) {
-        super();
-        this.baseUrl = baseUrl;
-        this.loginUrl = loginUrl;
-        this.clientId = clientId;
-        this.clientSecret = clientSecret;
-        this.redirectUrl = redirectUrl;
-        this.scope = scope;
-        this.accessToken = accessToken;
-        this.refreshToken = refreshToken;
-        this.sessionId = sessionId;
+    constructor(kwargs = {}) {
+        super(kwargs);
+        this.baseUrl = conf("RIPEID_BASE_URL", RIPEID_BASE_URL);
+        this.loginUrl = conf("RIPEID_LOGIN_URL", RIPEID_LOGIN_URL);
+        this.clientId = conf("RIPEID_ID", null);
+        this.clientSecret = conf("RIPEID_SECRET", null);
+        this.redirectUrl = conf("RIPEID_REDIRECT_URL", null);
+        this.baseUrl = kwargs.baseUrl === undefined ? this.baseUrl : kwargs.baseUrl;
+        this.loginUrl = kwargs.loginUrl === undefined ? this.loginUrl : kwargs.loginUrl;
+        this.clientId = kwargs.clientId === undefined ? this.clientId : kwargs.clientId;
+        this.clientSecret = kwargs.clientSecret === undefined ? this.clientSecret : kwargs.clientSecret;
+        this.redirectUrl = kwargs.redirectUrl === undefined ? this.redirectUrl : kwargs.redirectUrl;
+        this.scope = kwargs.scope === undefined ? RIPEID_SCOPE : kwargs.scope;
+        this.accessToken = kwargs.accessToken === undefined ? null : kwargs.accessToken;
+        this.refreshToken = kwargs.refreshToken === undefined ? null : kwargs.refreshToken;
+        this.sessionId = kwargs.sessionId === undefined ? null : kwargs.sessionId;
     }
 
     async build(method, url, options = {}) {
