@@ -5,8 +5,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}/examples/simple.js",
-            "envFile": "${workspaceFolder}/example.env"
+            "program": "${workspaceFolder}/examples/simple.js"
         }
     ]
 }
