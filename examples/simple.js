@@ -1,5 +1,5 @@
-const ripe = require("..");
 const yonius = require("yonius");
+const ripe = require("..");
 
 async function run() {
     await yonius.load();
