@@ -27,7 +27,7 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
     }
 
     static async load() {
-        load();
+        await load();
     }
 
     async build(method, url, options = {}) {
