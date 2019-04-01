@@ -9,6 +9,7 @@
 <body>
     <script>
         async function hello() {
+            await ripeId.API.load();
             const api = new ripeId.API();
             const result = await api.ip();
             alert(result.origin);

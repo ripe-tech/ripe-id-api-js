@@ -43,7 +43,7 @@
         "watch": "rollup -c -w"
     },
     "dependencies": {
-        "yonius": "^0.1.10"
+        "yonius": "^0.1.11"
     },
     "devDependencies": {
         "@babel/core": "^7.4.0",

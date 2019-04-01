@@ -1,4 +1,4 @@
-import { OAuth2API, mix, urlEncode, verifyMany, conf } from "yonius";
+import { OAuth2API, mix, urlEncode, verifyMany, load, conf } from "yonius";
 import { AccountAPI } from "./account";
 import { HTTPBinAPI } from "./httpbin";
 
@@ -24,6 +24,10 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
         this.accessToken = kwargs.accessToken === undefined ? null : kwargs.accessToken;
         this.refreshToken = kwargs.refreshToken === undefined ? null : kwargs.refreshToken;
         this.sessionId = kwargs.sessionId === undefined ? null : kwargs.sessionId;
+    }
+
+    static async load() {
+        load();
     }
 
     async build(method, url, options = {}) {
