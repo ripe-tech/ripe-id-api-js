@@ -44,7 +44,7 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
     }
 
     async authCallback(params, headers) {
-        if (this.refresh_token) {
+        if (this.refreshToken) {
             this.oauthRefresh();
             params.access_token = this.getAccessToken();
         }
@@ -78,7 +78,7 @@ export class API extends mix(OAuth2API).with(HTTPBinAPI, AccountAPI) {
                 client_id: this.clientId,
                 client_secret: this.clientSecret,
                 grant_type: "authorization_code",
-                redirect_uri: this.redirect_url,
+                redirect_uri: this.redirectUrl,
                 code: code
             },
             kwargs: {
