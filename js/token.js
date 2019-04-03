@@ -11,6 +11,10 @@ export const TokenAPI = superclass =>
             const contents = await this.post(url, {
                 params: {
                     token: token
+                },
+                kwargs: {
+                    token: false,
+                    auth: false
                 }
             });
             return contents;
