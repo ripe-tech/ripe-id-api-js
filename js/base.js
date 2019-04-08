@@ -126,6 +126,10 @@ export class API extends mix(OAuth2API).with(AccountAPI, TokenAPI) {
         this.trigger("auth", contents);
         return this.sessionId;
     }
+
+    get oauthTypes() {
+        return ["param"];
+    }
 }
 
 export default API;
