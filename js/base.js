@@ -35,6 +35,7 @@ export class API extends mix(OAuth2API).with(AccountAPI, TokenAPI) {
         const params = options.params !== undefined ? options.params : {};
         const kwargs = options.kwargs !== undefined ? options.kwargs : {};
         const auth = kwargs.auth === undefined ? true : kwargs.auth;
+        delete kwargs.auth;
         if (auth) params.sid = await this.getSessionId();
     }
 
