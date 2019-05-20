@@ -11,6 +11,10 @@ export const AccountAPI = superclass =>
             const contents = await this.get(url);
             return contents;
         }
+
+        avatarUrlAccount(username) {
+            return this.baseUrl + `accounts/${username}/avatar`;
+        }
     };
 
 export default AccountAPI;
