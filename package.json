@@ -37,7 +37,9 @@
         "build": "rollup -c",
         "example": "node examples/simple.js",
         "lint": "eslint \"./{js,test}/**/*.{js,json}\"",
+        "lint-fix": "eslint \"./{js,test}/**/*.{js,json}\" --fix",
         "prettier": "prettier \"./*.{js,json}\" \"./{js,test}/**/*.{js,json}\" --write",
+        "pretty": "npm run prettier && npm run lint-fix",
         "test": "mocha --recursive",
         "upgrade": "npx sort-package-json && ncu -u",
         "watch": "rollup -c -w"
