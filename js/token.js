@@ -7,7 +7,7 @@ export const TokenAPI = superclass =>
         }
 
         async redeemToken(token) {
-            const url = this.baseUrl + "accounts/redeem";
+            const url = this.baseUrl + "tokens/redeem";
             const contents = await this.post(url, {
                 params: {
                     token: token
