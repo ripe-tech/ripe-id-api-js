@@ -40,7 +40,7 @@ const banner =
 
 export default [
     {
-        input: "js/base.js",
+        input: "js/index.js",
         external: ["node-fetch"],
         output: {
             name: "ripeId",
