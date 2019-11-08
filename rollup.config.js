@@ -70,7 +70,7 @@ export default [
         ]
     },
     {
-        input: "js/base.js",
+        input: "js/index.js",
         external: ["node-fetch", "fs", "process", "path"],
         output: [
             {
