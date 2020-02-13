@@ -1,8 +1,8 @@
-const ripe = require("..");
+const ripeId = require("..");
 
 async function run() {
-    await ripe.API.load();
-    const api = new ripe.API();
+    await ripeId.API.load();
+    const api = new ripeId.API();
     console.info(await api.oauthAuthorize());
 }
 
