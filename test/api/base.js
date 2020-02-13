@@ -3,7 +3,7 @@ const ripe = require("../..");
 
 describe("AccountAPI", function() {
     describe("#constructor()", function() {
-        it("should be able to contruct a new Acocunt API instance", () => {
+        it("should be able to construct a new Account API instance", () => {
             const api = new ripe.API();
             assert.notStrictEqual(api.selfAccount, null);
             assert.notStrictEqual(api.selfAccount, undefined);
