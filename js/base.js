@@ -32,11 +32,11 @@ export class API extends mix(OAuth2API).with(AccountAPI, TokenAPI) {
 
     async build(method, url, options = {}) {
         await super.build(method, url, options);
-        const params = options.params !== undefined ? options.params : {};
-        const kwargs = options.kwargs !== undefined ? options.kwargs : {};
-        const auth = kwargs.auth === undefined ? true : kwargs.auth;
-        delete kwargs.auth;
-        if (auth) params.sid = await this.getSessionId();
+        options.params = options.params !== undefined ? options.params : {};
+        options.kwargs = options.kwargs !== undefined ? options.kwargs : {};
+        const auth = options.kwargs.auth === undefined ? true : options.kwargs.auth;
+        delete options.kwargs.auth;
+        if (auth) options.params.sid = await this.getSessionId();
     }
 
     async getSessionId() {
