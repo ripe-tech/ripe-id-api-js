@@ -19,5 +19,6 @@ RIPE ID API Javascript is currently licensed under the [Apache License, Version 
 ## Build Automation
 
 [![Build Status](https://travis-ci.org/ripe-tech/ripe-id-api-js.svg?branch=master)](https://travis-ci.org/ripe-tech/ripe-id-api-js)
+[![Build Status GitHub](https://github.com/ripe-tech/ripe-id-api-js/workflows/Main%20Workflow/badge.svg)](https://github.com/ripe-tech/ripe-id-api-js/actions)
 [![npm Status](https://img.shields.io/npm/v/ripe-id-api.svg)](https://www.npmjs.com/package/ripe-id-api)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://www.apache.org/licenses/)
