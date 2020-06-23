@@ -1,4 +1,4 @@
-# RIPE ID API Javascript
+<h1><a href="https://id.platforme.com"><img src="res/logo.svg" alt="RIPE ID API Javascript" height="60" style="height: 60px;"></a></h1>
 
 The Javascript version of the RIPE ID API client.
 
