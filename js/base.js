@@ -39,11 +39,6 @@ export class API extends mix(OAuth2API).with(AccountAPI, TokenAPI) {
         if (auth) options.params.sid = await this.getSessionId();
     }
 
-    async getSessionId() {
-        if (this.sessionId) return this.sessionId;
-        return this.oauthLogin();
-    }
-
     async authCallback(params, headers) {
         if (this.refreshToken) {
             this.oauthRefresh();
@@ -55,6 +50,11 @@ export class API extends mix(OAuth2API).with(AccountAPI, TokenAPI) {
             const sessionId = this.getSessionId();
             params.sid = sessionId;
         }
+    }
+
+    async getSessionId() {
+        if (this.sessionId) return this.sessionId;
+        return this.oauthLogin();
     }
 
     async oauthAuthorize(state = null) {
