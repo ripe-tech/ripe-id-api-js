@@ -41,13 +41,13 @@ export class API extends mix(OAuth2API).with(AccountAPI, TokenAPI) {
 
     async authCallback(params, headers) {
         if (this.refreshToken) {
-            this.oauthRefresh();
+            await this.oauthRefresh();
             params.access_token = this.getAccessToken();
         }
 
         if (this.sessionId) {
             this.sessionId = null;
-            const sessionId = this.getSessionId();
+            const sessionId = await this.getSessionId();
             params.sid = sessionId;
         }
     }
