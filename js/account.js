@@ -13,7 +13,7 @@ export const AccountAPI = superclass =>
         }
 
         async listAccounts() {
-            const url = this.baseUrl + `accounts`;
+            const url = this.baseUrl + "accounts";
             const contents = await this.get(url);
             return contents;
         }
