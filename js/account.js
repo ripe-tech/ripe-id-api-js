@@ -12,6 +12,12 @@ export const AccountAPI = superclass =>
             return contents;
         }
 
+        async listAccounts() {
+            const url = this.baseUrl + "accounts";
+            const contents = await this.get(url);
+            return contents;
+        }
+
         async getAccount(username) {
             const url = this.baseUrl + `accounts/${username}`;
             const contents = await this.get(url);
