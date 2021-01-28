@@ -12,6 +12,7 @@ export class API extends mix(OAuth2API).with(AccountAPI, RoleAPI, TokenAPI) {
         super(kwargs);
         this.baseUrl = conf("RIPEID_BASE_URL", RIPEID_BASE_URL);
         this.loginUrl = conf("RIPEID_LOGIN_URL", RIPEID_LOGIN_URL);
+        this.secretKey = conf("RIPEID_SECRET_KEY", null);
         this.clientId = conf("RIPEID_ID", null);
         this.clientSecret = conf("RIPEID_SECRET", null);
         this.redirectUrl = conf("RIPEID_REDIRECT_URL", null);
