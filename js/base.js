@@ -17,6 +17,7 @@ export class API extends mix(OAuth2API).with(AccountAPI, RoleAPI, TokenAPI) {
         this.redirectUrl = conf("RIPEID_REDIRECT_URL", null);
         this.baseUrl = kwargs.baseUrl === undefined ? this.baseUrl : kwargs.baseUrl;
         this.loginUrl = kwargs.loginUrl === undefined ? this.loginUrl : kwargs.loginUrl;
+        this.secretKey = kwargs.secretKey === undefined ? this.secretKey : kwargs.secretKey;
         this.clientId = kwargs.clientId === undefined ? this.clientId : kwargs.clientId;
         this.clientSecret =
             kwargs.clientSecret === undefined ? this.clientSecret : kwargs.clientSecret;
@@ -35,18 +36,20 @@ export class API extends mix(OAuth2API).with(AccountAPI, RoleAPI, TokenAPI) {
         await super.build(method, url, options);
         options.params = options.params !== undefined ? options.params : {};
         options.kwargs = options.kwargs !== undefined ? options.kwargs : {};
+        options.headers = options.headers !== undefined ? options.headers : {};
         const auth = options.kwargs.auth === undefined ? true : options.kwargs.auth;
         delete options.kwargs.auth;
-        if (auth) options.params.sid = await this.getSessionId();
+        if (auth && !this.secretKey) options.params.sid = await this.getSessionId();
+        if (this.secretKey) options.headers["X-Secret-Key"] = this.secretKey;
     }
 
     async authCallback(params, headers) {
-        if (this.refreshToken) {
+        if (this.refreshToken && params.access_token) {
             await this.oauthRefresh();
             params.access_token = this.getAccessToken();
         }
 
-        if (this.sessionId) {
+        if (this.sessionId && params.sid) {
             this.sessionId = null;
             const sessionId = await this.getSessionId();
             params.sid = sessionId;
@@ -131,6 +134,10 @@ export class API extends mix(OAuth2API).with(AccountAPI, RoleAPI, TokenAPI) {
 
     get oauthTypes() {
         return ["param"];
+    }
+
+    get tokenDefault() {
+        return false;
     }
 }
 
