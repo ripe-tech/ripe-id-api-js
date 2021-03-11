@@ -6,7 +6,7 @@ The Javascript version of the RIPE ID API client.
 
 | Name                    | Type  | Default                          | Description                                                                |
 | ----------------------- | ----- | -------------------------------- | -------------------------------------------------------------------------- |
-| **RIPEID_BASE_URL**     | `str` | `https://id.platforme.com/api/"` | The base URL to the RIPE ID server instance to be used.                    |
+| **RIPEID_BASE_URL**     | `str` | `https://id.platforme.com/api/` | The base URL to the RIPE ID server instance to be used.                    |
 | **RIPEID_LOGIN_URL**    | `str` | `https://id.platforme.com/`      | The base URL to the web login endpoints of the RIPE ID instance.           |
 | **RIPEID_ID**           | `str` | `null`                           | The client ID to be used for RIPE ID client authentication.                |
 | **RIPEID_SECRET**       | `str` | `null`                           | The client secret to be used for RIPE ID client authentication.            |
