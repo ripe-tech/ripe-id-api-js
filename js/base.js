@@ -1,13 +1,14 @@
 import { OAuth2API, mix, urlEncode, verifyMany, load, conf } from "yonius";
 import { AccountAPI } from "./account";
 import { RoleAPI } from "./role";
+import { SecretAPI } from "./secret";
 import { TokenAPI } from "./token";
 
 const RIPEID_BASE_URL = "https://id.platforme.com/api/";
 const RIPEID_LOGIN_URL = "https://id.platforme.com/";
 const RIPEID_SCOPE = ["account.me", "account.acl"];
 
-export class API extends mix(OAuth2API).with(AccountAPI, RoleAPI, TokenAPI) {
+export class API extends mix(OAuth2API).with(AccountAPI, RoleAPI, SecretAPI, TokenAPI) {
     constructor(kwargs = {}) {
         super(kwargs);
         this.baseUrl = conf("RIPEID_BASE_URL", RIPEID_BASE_URL);
