@@ -34,11 +34,11 @@ export const AccountAPI = superclass =>
         }
 
         showUrlAccount(username) {
-            return this.baseUrl + `accounts/in/${username}`;
+            return this.loginUrl + `accounts/in/${username}`;
         }
 
         avatarUrlAccount(username) {
-            return this.baseUrl + `accounts/${username}/avatar`;
+            return this.loginUrl + `accounts/${username}/avatar`;
         }
     };
 
