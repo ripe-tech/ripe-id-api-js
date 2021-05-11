@@ -1,6 +1,6 @@
 {
     "name": "ripe-id-api",
-    "version": "0.4.1",
+    "version": "0.4.2",
     "description": "The RIPE ID API client",
     "keywords": [
         "api",
