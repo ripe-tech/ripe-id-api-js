@@ -33,6 +33,14 @@ export const AccountAPI = superclass =>
             return contents;
         }
 
+        async notifyAccount(username, engine, payload) {
+            const url = this.baseUrl + `accounts/${username}/notify`;
+            const contents = await this.put(url, {
+                dataJ: Object.apply({}, payload, { engine: engine })
+            });
+            return contents;
+        }
+
         showUrlAccount(username) {
             return this.loginUrl + `accounts/${username}`;
         }
