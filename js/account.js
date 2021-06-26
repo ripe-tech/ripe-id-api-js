@@ -34,6 +34,10 @@ export const AccountAPI = superclass =>
         }
 
         async notifyAccount(username, engine, payload) {
+            payload =
+                typeof payload === "string"
+                    ? { subject: payload, title: payload, contents: payload }
+                    : payload;
             const url = this.baseUrl + `accounts/${username}/notify`;
             const contents = await this.put(url, {
                 dataJ: Object.apply({}, payload, { engine: engine })
