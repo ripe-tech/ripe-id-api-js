@@ -134,6 +134,21 @@ export class API extends mix(OAuth2API).with(AccountAPI, RoleAPI, SecretAPI, Tok
         return this.sessionId;
     }
 
+    async login(username, password) {
+        const url = this.baseUrl + "login";
+        const contents = await this.post(url, {
+            callback: false,
+            params: {
+                username: username,
+                password: password
+            },
+            kwargs: {
+                auth: false
+            }
+        });
+        return contents;
+    }
+
     get oauthTypes() {
         return ["param"];
     }
