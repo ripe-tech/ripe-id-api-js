@@ -6,6 +6,14 @@ export const AccountAPI = superclass =>
             return contents;
         }
 
+        async updateSelfAccount(account) {
+            const url = this.baseUrl + "accounts/me";
+            const contents = await this.put(url, {
+                dataJ: account
+            });
+            return contents;
+        }
+
         async aclAccount() {
             const url = this.baseUrl + "accounts/acl";
             const contents = await this.get(url);
