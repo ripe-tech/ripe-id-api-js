@@ -8,14 +8,12 @@ export const AccountAPI = superclass =>
 
         async updateSelfAccount(account) {
             const url = this.baseUrl + "accounts/me";
-
-            const dataM = {};
-            if (account.avatar) dataM.avatar = account.avatar;
-            if (account.description) dataM.description = account.description;
-            if (account.meta_extra) dataM.meta_extra = JSON.stringify(account.meta_extra);
-
+            account = Object.assign({}, account);
+            if (account.meta_extra) {
+                account.meta_extra = JSON.stringify(account.meta_extra);
+            }
             const contents = await this.put(url, {
-                dataM: dataM
+                dataM: account
             });
             return contents;
         }
