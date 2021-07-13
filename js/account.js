@@ -6,6 +6,18 @@ export const AccountAPI = superclass =>
             return contents;
         }
 
+        async updateSelfAccount(account) {
+            const url = this.baseUrl + "accounts/me";
+            account = Object.assign({}, account);
+            if (account.meta_extra) {
+                account.meta_extra = JSON.stringify(account.meta_extra);
+            }
+            const contents = await this.put(url, {
+                dataM: account
+            });
+            return contents;
+        }
+
         async aclAccount() {
             const url = this.baseUrl + "accounts/acl";
             const contents = await this.get(url);
