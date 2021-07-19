@@ -57,7 +57,7 @@ export const AccountAPI = superclass =>
             return contents;
         }
 
-        async recoverPasswordAccount(username) {
+        async recoverAccount(username) {
             const url = this.baseUrl + `accounts/${username}/recover`;
             const contents = await this.post(url);
             return contents;
