@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *
 
+## [0.6.1] - 2021-07-23
+
+### Fixed
+
+* Removed auth from the recover password endpoint method
+
 ## [0.6.0] - 2021-07-19
 
 ### Added
