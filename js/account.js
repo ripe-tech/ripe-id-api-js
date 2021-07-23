@@ -59,7 +59,11 @@ export const AccountAPI = superclass =>
 
         async recoverAccount(username) {
             const url = this.baseUrl + `accounts/${username}/recover`;
-            const contents = await this.post(url);
+            const contents = await this.post(url, {
+                kwargs: {
+                    auth: false
+                }
+            });
             return contents;
         }
 
