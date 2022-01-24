@@ -1,7 +1,7 @@
 const assert = require("assert");
 const ripe = require("../..");
 
-describe("AccountAPI", function() {
+describe("API", function() {
     describe("#constructor()", function() {
         it("should be able to construct a new Account API instance", () => {
             const api = new ripe.API();
