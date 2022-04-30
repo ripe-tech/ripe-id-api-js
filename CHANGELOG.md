@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* Support for cache flag in avatar URL
+*
 
 ### Changed
 
@@ -18,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 *
+
+## [0.7.0] - 2022-04-30
+
+### Added
+
+* Support for cache flag in avatar URL
 
 ## [0.6.1] - 2021-07-23
 
