@@ -19,6 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 *
 
+## [0.7.1] - 2022-05-02
+
+### Added
+
+* Support for size, width and height in the avatar image URL generation
+
 ## [0.7.0] - 2022-04-30
 
 ### Added
