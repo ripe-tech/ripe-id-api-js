@@ -71,9 +71,15 @@ export const AccountAPI = superclass =>
             return this.loginUrl + `accounts/${username}`;
         }
 
-        avatarUrlAccount(username, { cache = undefined } = {}) {
+        avatarUrlAccount(
+            username,
+            { size = undefined, width = undefined, height = undefined, cache = undefined } = {}
+        ) {
             const baseUrl = this.loginUrl + `accounts/${username}/avatar`;
             const params = [];
+            if (size !== undefined) params.push(["size", size]);
+            if (width !== undefined) params.push(["width", width]);
+            if (height !== undefined) params.push(["height", height]);
             if (cache !== undefined) params.push(["cache", cache ? "1" : "0"]);
             const extraUrl = this._generateExtraUrl(params);
             return `${baseUrl}${extraUrl}`;

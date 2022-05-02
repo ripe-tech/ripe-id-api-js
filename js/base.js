@@ -150,7 +150,7 @@ export class API extends mix(OAuth2API).with(AccountAPI, RoleAPI, SecretAPI, Tok
     }
 
     _generateExtraUrl(params) {
-        return params.length > 0 ? "?" + params.map(([k, v]) => `${k}=${v}`).join("&") : "";
+        return params.length > 0 ? "?" + params.map(([k, v]) => `${k}=${String(v)}`).join("&") : "";
     }
 
     get oauthTypes() {
