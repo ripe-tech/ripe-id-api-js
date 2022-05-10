@@ -9,8 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-* Support for size, width and height in the avatar image URL generation
-* Add `createAccountMultipart` - [ripe-util-vue/#265](https://github.com/ripe-tech/ripe-util-vue/issues/265)
+*
 
 ### Changed
 
@@ -19,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 *
+
+## [0.7.2] - 2022-05-10
+
+### Added
+
+* Add `createAccountMultipart` - [ripe-util-vue/#265](https://github.com/ripe-tech/ripe-util-vue/issues/265)
 
 ## [0.7.1] - 2022-05-02
 
